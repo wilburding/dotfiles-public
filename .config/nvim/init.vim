@@ -24,7 +24,7 @@ set laststatus=2
 set scrolloff=10
 set expandtab
 "let loaded_matchparen = 1
-set shell=fish
+set shell=zsh
 set backupskip=/tmp/*,/private/tmp/*
 
 " incremental substitution (neovim)
@@ -47,8 +47,8 @@ set ignorecase
 set smarttab
 " indents
 filetype plugin indent on
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set ai "Auto indent
 set si "Smart indent
 set nowrap "No Wrap lines
@@ -69,6 +69,9 @@ set formatoptions+=r
 " ---------------------------------------------------------------------
 set cursorline
 "set cursorcolumn
+
+" Set 7 lines to the curors - when moving vertical..
+set so=7
 
 " Set cursor line color on visual mode
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
@@ -147,5 +150,7 @@ endif
 " ---------------------------------------------------------------------
 set exrc
 "}}}
+
+runtime ./pyvenv.vim
 
 " vim: set foldmethod=marker foldlevel=0:

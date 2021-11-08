@@ -2,12 +2,17 @@ if has("nvim")
   let g:plug_home = stdpath('data') . '/plugged'
 endif
 
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 call plug#begin()
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-fugitive', Cond(!exists('g:vscode'))
+Plug 'tpope/vim-rhubarb', Cond(!exists('g:vscode'))
 
-if has("nvim")
+if has("nvim") && !exists('g:vscode')
   Plug 'hoob3rt/lualine.nvim'
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
@@ -25,11 +30,19 @@ if has("nvim")
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'windwp/nvim-autopairs'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree', Cond(!exists('g:vscode'))
+Plug 'scrooloose/nerdcommenter'
+Plug 'jlanzarotta/bufexplorer', Cond(!exists('g:vscode'))
+Plug 'ervandew/supertab'
+Plug 'adelarsq/vim-matchit'
 
 call plug#end()
 

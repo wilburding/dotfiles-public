@@ -1,5 +1,4 @@
 if !exists('g:loaded_nvim_treesitter')
-  echom "Not loaded treesitter"
   finish
 endif
 
@@ -16,13 +15,11 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = {
     "tsx",
     "toml",
-    "fish",
-    "php",
     "json",
     "yaml",
-    "swift",
     "html",
-    "scss"
+    "scss",
+    "python",
   },
 }
 
