@@ -43,8 +43,9 @@ local on_attach = function(client, bufnr)
   --buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   -- formatting
-  if client.name == 'tsserver' then
-    client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_formatting = false
+  if client.name == 'golang' then
+    client.resolved_capabilities.document_formatting = true
   end
 
   if client.resolved_capabilities.document_formatting then
@@ -175,7 +176,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
   
-require'lspconfig'.pylsp.setup{
+nvim_lsp.pylsp.setup{
+  on_attach = on_attach
+}
+
+nvim_lsp.ccls.setup{
   on_attach = on_attach
 }
 
