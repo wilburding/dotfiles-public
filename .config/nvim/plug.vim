@@ -32,6 +32,7 @@ if has("nvim") && !exists('g:vscode')
   Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'windwp/nvim-autopairs'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
